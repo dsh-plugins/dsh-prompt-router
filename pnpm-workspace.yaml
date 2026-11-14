@@ -1,0 +1,7 @@
+# pnpm 工作区标记：本仓库只有一个包（插件即包根目录）。
+#
+# 保留空 workspace 配置而不是删除文件，是为了让 pnpm 明确把当前目录视为
+# 工作区根，避免父目录如有 workspace 时把插件错误地并入另一个工作区。
+packages: []
+minimumReleaseAgeExclude:
+  - '@dsh-plugin/dsh-loader@2.0.0-dev.43494735845'

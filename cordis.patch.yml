@@ -1,0 +1,12 @@
+# dsh-prompt-router 的组合包补丁：把本插件的宿主端挂到当前 profile。
+#
+# `package.json` 的 `dsh.bundle.patch` 指向本文件，安装后插件自动加入
+# `dsh.profile.bundles`，启动时按此层应用补丁；用户无需手改 profile 的
+# cordis.patch.yml。本补丁在空条目列表上应用（bundle 层先于 profile 自己的
+# 补丁合成），因此是最小 `insert`。后续层仍可按稳定 id 覆写这一行。
+#
+# 所有运行参数都在插件设置页（dsh-loader config-api）维护，默认值见
+# src/config.ts，此处不写死任何用户数据路径。
+- insert:
+    - id: dsh-prompt-router
+      name: '@dsh-plugin/dsh-prompt-router'

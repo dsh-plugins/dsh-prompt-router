@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Prompt Router",
+    "description": "Assembles system prompts and tool whitelists per session from AGENTS.md / SKILL.md frontmatter, bound custom modes, and live runtime probes, with pinned/scoped budgets and a diagnostics API."
+  }
+}

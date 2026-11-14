@@ -1,0 +1,71 @@
+{
+  "name": "@dsh-plugin/dsh-prompt-router",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.17.0",
+  "description": "DSH 提示词路由插件：按意图上下文与运行时探测动态拼装系统提示词与工具白名单，并统一拼装自定义模式。",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "icon": "./icon.svg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsh-plugins/dsh-prompt-router.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "locale",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "docs",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('lib', { recursive: true, force: true });\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": "0.2.2-rc.1 || 0.2.2-rc.2"
+  },
+  "peerDependencies": {
+    "@dsh-plugin/dsh-loader": "^2.0.0-dev.43494735845"
+  },
+  "devDependencies": {
+    "@dsh-plugin/dsh-loader": "2.0.0-dev.43494735845",
+    "@types/node": "^24.13.3",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "plugin",
+    "prompt",
+    "router",
+    "system-prompt",
+    "tool-whitelist"
+  ],
+  "license": "LGPL-3.0-only"
+}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "提示词路由",
+    "description": "按会话动态拼装系统提示词与工具白名单：读取 AGENTS.md / SKILL.md 的 YAML 头部规则、已绑定的自定义模式与运行时探测结果，支持 pinned/scoped 预算裁剪与诊断接口。"
+  }
+}

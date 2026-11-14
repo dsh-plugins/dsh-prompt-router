@@ -16,6 +16,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "exports": {
+    "./loader-check": "./loader-check.mjs",
     ".": {
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
@@ -26,6 +27,7 @@
     "./cordis.patch.yml": "./cordis.patch.yml"
   },
   "files": [
+    "loader-check.mjs",
     "lib",
     "locale",
     "cordis.patch.yml",
@@ -48,7 +50,7 @@
   },
   "engines": {
     "node": ">=24.9.0",
-    "dsh": "0.2.2-rc.1 || 0.2.2-rc.2"
+    "dsh": ">=0.2.2-alpha.1"
   },
   "peerDependencies": {
     "@dsh-plugin/dsh-loader": "^2.0.0-dev.43494735845"

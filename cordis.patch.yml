@@ -8,5 +8,7 @@
 # 所有运行参数都在插件设置页（dsh-loader config-api）维护，默认值见
 # src/config.ts，此处不写死任何用户数据路径。
 - insert:
+    - id: dsh-prompt-router-loader-check
+      name: '@dsh-plugin/dsh-prompt-router/loader-check'
     - id: dsh-prompt-router
       name: '@dsh-plugin/dsh-prompt-router'

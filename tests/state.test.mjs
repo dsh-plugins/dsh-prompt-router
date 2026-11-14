@@ -4,7 +4,7 @@
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { after, before, describe, it } from 'node:test';
 import { discoverRuleFiles, findProjectRoot } from '../lib/discovery.js';
 import { readModeCatalog } from '../lib/modes.js';
@@ -215,9 +215,11 @@ describe('RouterState', () => {
 
 describe('deriveHostPaths / resolveConfig', () => {
   it('从 --profile 参数推导 profile', () => {
-    const paths = deriveHostPaths({ DSH_HOME: 'C:\\dsh' }, ['node', 'bin.js', '--profile', 'web', '--port', '1']);
+    // 用当前平台可解析的绝对路径，避免 Windows 字面路径在其他平台被当成相对路径。
+    const home = resolve(root, 'custom-dsh-home');
+    const paths = deriveHostPaths({ DSH_HOME: home }, ['node', 'bin.js', '--profile', 'web', '--port', '1']);
     assert.equal(paths.profile, 'web');
-    assert.equal(paths.dshHome, 'C:\\dsh');
+    assert.equal(paths.dshHome, home);
   });
 
   it('缺少参数时依次回退 DSH_PROFILE 与 web', () => {
